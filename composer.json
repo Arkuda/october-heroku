@@ -28,8 +28,8 @@
         "october/system": "dev-master",
         "october/backend": "dev-master",
         "october/cms": "dev-master",
-        "october/rain": "dev-master"
-        "ext-gd": "*",
+        "october/rain": "dev-master",
+        "ext-gd": "*"
     },
     "require-dev": {
         "mockery/mockery": "dev-master"
