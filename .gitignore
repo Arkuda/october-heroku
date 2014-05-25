@@ -2,6 +2,7 @@
 /vendor
 composer.phar
 .DS_Store
+.vagrant
 php_errors.log
 nginx-error.log
 nginx-access.log

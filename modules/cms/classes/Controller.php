@@ -1,6 +1,7 @@
 <?php namespace Cms\Classes;
 
 use URL;
+use Str;
 use App;
 use File;
 use View;
@@ -237,24 +238,86 @@ class Controller extends BaseController
      */
     protected function initComponents()
     {
-        $manager = ComponentManager::instance();
-        
         if (!$this->layout->isFallBack()) {
             foreach ($this->layout->settings['components'] as $component => $properties) {
                 list($name, $alias) = strpos($component, ' ') ? explode(' ', $component) : array($component, $component);
-                $componentObj = $manager->makeComponent($name, $this->layoutObj, $properties);
-                $componentObj->id = uniqid($alias);
-                $componentObj->alias = $alias;
-                $this->vars[$alias] = $this->layout->components[$alias] = $componentObj;
+                $this->addComponent($name, $alias, $properties, true);
             }
         }
 
         foreach ($this->page->settings['components'] as $component => $properties) {
             list($name, $alias) = strpos($component, ' ') ? explode(' ', $component) : array($component, $component);
+            $this->addComponent($name, $alias, $properties);
+        }
+    }
+
+    /**
+     * Adds a component to the page object
+     * @param mixed  $name        Component class name or short name
+     * @param string $alias       Alias to give the component
+     * @param array  $properties  Component properties
+     * @param bool   $addToLayout Add to layout, instead of page
+     * @return ComponentBase Component object
+     */
+    public function addComponent($name, $alias, $properties, $addToLayout = false)
+    {
+        $manager = ComponentManager::instance();
+
+        if ($addToLayout) {
+            $componentObj = $manager->makeComponent($name, $this->layoutObj, $properties);
+            $componentObj->alias = $alias;
+            $this->vars[$alias] = $this->layout->components[$alias] = $componentObj;
+        }
+        else {
             $componentObj = $manager->makeComponent($name, $this->pageObj, $properties);
             $componentObj->alias = $alias;
             $this->vars[$alias] = $this->page->components[$alias] = $componentObj;
         }
+
+        $componentObj->onInit();
+        return $componentObj;
+    }
+
+    /**
+     * Creates a basic component object for another page, useful for extracting properties.
+     * @param  string $page  Page name or page file name
+     * @param  string $class Component class name
+     * @return ComponentBase
+     */
+    public function getOtherPageComponent($page, $class)
+    {
+        $class = Str::normalizeClassName($class);
+        $theme = $this->getTheme();
+        $manager = ComponentManager::instance();
+        $componentObj = new $class;
+
+        if (($page = Page::loadCached($theme, $page)) && isset($page->settings['components'])) {
+            foreach ($page->settings['components'] as $component => $properties) {
+                list($name, $alias) = strpos($component, ' ') ? explode(' ', $component) : array($component, $component);
+                if ($manager->resolve($name) == $class) {
+                    $componentObj->setProperties($properties);
+                    $componentObj->alias = $alias;
+                    return $componentObj;
+                }
+            }
+
+            if (!isset($page->settings['layout']))
+                return null;
+
+            $layout = $page->settings['layout'];
+            if (($layout = Layout::loadCached($theme, $layout)) && isset($layout->settings['components'])) {
+                foreach ($layout->settings['components'] as $component => $properties) {
+                    list($name, $alias) = strpos($component, ' ') ? explode(' ', $component) : array($component, $component);
+                    if ($manager->resolve($name) == $class) {
+                        $componentObj->setProperties($properties);
+                        $componentObj->alias = $alias;
+                        return $componentObj;
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -496,7 +559,6 @@ class Controller extends BaseController
             /*
              * Set context for self access
              */
-            $componentObj->id = uniqid($componentAlias);
             $this->vars['__SELF__'] = $componentObj;
         }
         else {
@@ -533,12 +595,13 @@ class Controller extends BaseController
     }
 
     /**
-     * Renders a component's default content. 
+     * Renders a component's default content.
      * @return string Returns the component default contents.
      */
     public function renderComponent($name, $parameters = [])
     {
         if ($componentObj = $this->findComponentByName($name)) {
+            $componentObj->id = uniqid($name);
             $componentObj->setProperties(array_merge($componentObj->getProperties(), $parameters));
             if ($result = $componentObj->onRender())
                 return $result;
@@ -689,7 +752,6 @@ class Controller extends BaseController
 
         return null;
     }
-
 
     /**
      * Searches the layout and page components by a partial file

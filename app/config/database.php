@@ -1,10 +1,13 @@
 <?php
-$url = parse_url(getenv("DATABASE_URL"));
+if ( !empty(getenv("DATABASE_URL")) ) {
+	$url = parse_url(getenv("DATABASE_URL"));
 
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
+	$host = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$database = substr($url["path"], 1);
+}
+
 
 return array(
 
@@ -71,10 +74,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => $host,
-	        'database' => $database,
-	        'username' => $username,
-	        'password' => $password,
+			'host'     => isset($host) ? $host : 'localhost',
+	        'database' => isset($database) ? $database : 'postgres',
+	        'username' => isset($username) ? $username : 'root',
+	        'password' => isset($password) ? $password : 'root',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
