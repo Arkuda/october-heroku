@@ -1,13 +1,4 @@
 <?php
-if ( !empty(getenv("DATABASE_URL")) ) {
-	$url = parse_url(getenv("DATABASE_URL"));
-
-	$host = $url["host"];
-	$username = $url["user"];
-	$password = $url["pass"];
-	$database = substr($url["path"], 1);
-}
-
 
 return array(
 
@@ -35,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'pgsql',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -64,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'database',
+			'database'  => 'october',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
@@ -74,10 +65,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => isset($host) ? $host : 'localhost',
-	        'database' => isset($database) ? $database : 'postgres',
-	        'username' => isset($username) ? $username : 'root',
-	        'password' => isset($password) ? $password : 'root',
+			'host'     => 'localhost',
+			'database' => 'database',
+			'username' => 'root',
+			'password' => '',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
@@ -125,7 +116,7 @@ return array(
 		'default' => array(
 			'host'     => '127.0.0.1',
 			'port'     => 6379,
-			'database' => 0,
+			'database' => 'october',
 		),
 
 	),
