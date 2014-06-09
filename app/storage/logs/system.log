@@ -1,0 +1,83 @@
+[2014-06-08 23:13:42] NULL.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/Applications/MAMP/tmp/mysql/mysql.sock' (2)' in /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#2 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(59): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(47): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(127): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(63): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2810): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2776): Illuminate\Database\Eloquent\Model::resolveConnection(NULL)
+#8 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1791): Illuminate\Database\Eloquent\Model->getConnection()
+#9 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1714): Illuminate\Database\Eloquent\Model->newBaseQueryBuilder()
+#10 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(559): Illuminate\Database\Eloquent\Model->newQuery()
+#11 /Users/developer/Websites/october-heroku/modules/system/classes/UpdateManager.php(174): Illuminate\Database\Eloquent\Model::all()
+#12 /Users/developer/Websites/october-heroku/modules/system/console/OctoberUpdate.php(38): System\Classes\UpdateManager->requestUpdateList()
+#13 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Console/Command.php(108): System\Console\OctoberUpdate->fire()
+#14 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(241): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Console/Command.php(96): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(885): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(191): Symfony\Component\Console\Application->doRunCommand(Object(System\Console\OctoberUpdate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /Users/developer/Websites/october-heroku/artisan(59): Symfony\Component\Console\Application->run()
+#20 {main} [] []
+[2014-06-08 23:26:27] NULL.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/Applications/MAMP/tmp/mysql/mysql.sock' (2)' in /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#2 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(59): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(47): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(127): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(63): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2810): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2776): Illuminate\Database\Eloquent\Model::resolveConnection(NULL)
+#8 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1791): Illuminate\Database\Eloquent\Model->getConnection()
+#9 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1714): Illuminate\Database\Eloquent\Model->newBaseQueryBuilder()
+#10 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(559): Illuminate\Database\Eloquent\Model->newQuery()
+#11 /Users/developer/Websites/october-heroku/modules/system/classes/UpdateManager.php(174): Illuminate\Database\Eloquent\Model::all()
+#12 /Users/developer/Websites/october-heroku/modules/system/console/OctoberUpdate.php(38): System\Classes\UpdateManager->requestUpdateList()
+#13 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Console/Command.php(108): System\Console\OctoberUpdate->fire()
+#14 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(241): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Console/Command.php(96): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(885): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(191): Symfony\Component\Console\Application->doRunCommand(Object(System\Console\OctoberUpdate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /Users/developer/Websites/october-heroku/artisan(59): Symfony\Component\Console\Application->run()
+#20 {main} [] []
+[2014-06-08 23:29:01] NULL.ERROR: exception 'InvalidArgumentException' with message 'Command "october" is not defined.
+
+Did you mean one of these?
+    october:update
+    october:down
+    october:up' in /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php:562
+Stack trace:
+#0 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Command/HelpCommand.php(76): Symfony\Component\Console\Application->find('october')
+#1 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(241): Symfony\Component\Console\Command\HelpCommand->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(885): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(191): Symfony\Component\Console\Application->doRunCommand(Object(Symfony\Component\Console\Command\HelpCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /Users/developer/Websites/october-heroku/artisan(59): Symfony\Component\Console\Application->run()
+#6 {main} [] []
+[2014-06-08 23:29:26] NULL.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/Applications/MAMP/tmp/mysql/mysql.sock' (2)' in /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#2 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(59): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(47): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(127): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(63): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2810): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2776): Illuminate\Database\Eloquent\Model::resolveConnection(NULL)
+#8 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1791): Illuminate\Database\Eloquent\Model->getConnection()
+#9 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1714): Illuminate\Database\Eloquent\Model->newBaseQueryBuilder()
+#10 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(559): Illuminate\Database\Eloquent\Model->newQuery()
+#11 /Users/developer/Websites/october-heroku/modules/system/classes/UpdateManager.php(174): Illuminate\Database\Eloquent\Model::all()
+#12 /Users/developer/Websites/october-heroku/modules/system/console/OctoberUpdate.php(38): System\Classes\UpdateManager->requestUpdateList()
+#13 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Console/Command.php(108): System\Console\OctoberUpdate->fire()
+#14 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(241): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /Users/developer/Websites/october-heroku/vendor/laravel/framework/src/Illuminate/Console/Command.php(96): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(885): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(191): Symfony\Component\Console\Application->doRunCommand(Object(System\Console\OctoberUpdate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Users/developer/Websites/october-heroku/vendor/symfony/console/Symfony/Component/Console/Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /Users/developer/Websites/october-heroku/artisan(59): Symfony\Component\Console\Application->run()
+#20 {main} [] []
